@@ -1,0 +1,62 @@
+﻿@model List<OrderViewModal>
+
+<div class="w-100 container" style="height: 100vh">
+
+    <h1 class="f-bangers pt-5">Registered Customers</h1>
+
+    <div style="overflow-x:auto;" class="form-container mt-4">
+       <div>
+            <table class="table table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>name</th>
+                        <th>S.Address</th>
+                        <th>B.Address</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Vga</th>
+                        <th>Ram</th>
+                        <th>Hard</th>
+                        <th>Processor</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr data-toggle="modal" data-target="#exampleModal" onclick="selectPayment(@category)">
+                            <td>@category.Devices_title</td>
+                            <td>@category.Customer_name</td>
+                            <td>@category.Shipping_address</td>
+                            <td>@category.Billing_address</td>
+                            <td>@category.Order_Type</td>
+                            <td>@category.Order_status</td>
+                            <td>@category.Vga_title</td>
+                            <td>@category.Ram_title</td>
+                            <td>@category.Processor_title</td>
+                            <td>@category.Hard_title</td>
+                            <td>@category.Amount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+       </div>
+    </div>
+
+    @*View more details modal start*@
+    @*******************************@
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content d-flex flex-column p-4 d-center">
+                <h4 class="mb-3">Handle Order !</h4>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-warning text-light">Processing</button>
+                    <button class="btn btn-primary">Shipped</button>
+                    <button class="btn btn-success">Completed</button>
+                    <button class="btn btn-danger">Cancelled</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
