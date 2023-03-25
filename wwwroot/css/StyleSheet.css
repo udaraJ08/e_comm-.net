@@ -1,0 +1,29 @@
+﻿.hero-header {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.4)), url(https://image.benq.com/is/image/benqco/Gamingroom_tk700sti-A);
+    overflow: hidden;
+}
+
+.full-page {
+    width: 100%;
+    height: 100vh;
+}
+
+.hero-topic {
+    font-size: 10rem;
+}
+
+.start-btn {
+    font-size: 1.5rem;
+}
+
+.custom-dropdown {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-color: #bdc3c7;
+}
+
+.custom-dropdown:focus {
+    outline: none;
+}

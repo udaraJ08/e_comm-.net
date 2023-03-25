@@ -1,0 +1,76 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = e_comm
+build_property.RootNamespace = e_comm
+build_property.ProjectDir = D:\SiNiSteR\education\Esoft\AD-2\e-comm\e-comm\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\SiNiSteR\education\Esoft\AD-2\e-comm\e-comm
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Computer/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJcQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Computer/Desktop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJcRGVza3RvcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Computer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Computer/Notebook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJcTm90ZWJvb2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Customer/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcVGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Manager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Manager/ManagerVga.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxNYW5hZ2VyVmdhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SiNiSteR/education/Esoft/AD-2/e-comm/e-comm/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qb16osb9tz

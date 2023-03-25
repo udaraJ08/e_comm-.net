@@ -1,0 +1,197 @@
+﻿@model List<CategoryViewModal>
+
+@{
+    string name = "category";
+
+    int i = 0;
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">e_comm</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Computer" asp-action="Index">Our Computers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h3 id="catTopic" class="f-bangers">Check out devices</h3>
+
+    <div class="w-100 mt-5 p-3 overflow-auto d-flex align-items-start gap-5 flex-wrap">
+        @foreach (var category in Model)
+        {
+            <div class="showcase-card-container bg-cloud">
+                <div class="overflow-hidden" style="height: 65%">
+                    <img class="object-fit" width="100%" height="250px" src=@category.Device_img />
+                </div>
+                <div class="mt-4">
+                    <h6 class="text-center font-bold"><b>@category.DeviceTitle</b></h6>
+                </div>
+                <div class="mt-3">
+                    <h4 class="text-center">Rs.@category.Total/=</h4>
+                </div>
+                <div class="d-flex mt-4">
+                    <button onclick="handleClick(@category.DeviceId)"
+                        data-toggle="modal" data-target="#exampleModal"
+                        class="btn btn-primary w-100">
+                        View Details
+                    </button>
+                    <button onclick="handleBuyNow(@category.DeviceId)" ;
+                        data-toggle="modal" data-target="#buyModal"
+                        class="btn btn-danger w-100">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        }
+
+        @*View more details modal start*@
+        @*******************************@
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Premium 2000</h5>
+                        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex">
+                        <div class="w-50">
+                            <img id="detDeviceImg" class="object-fit" width="100%" height="250px" src="https://m.media-amazon.com/images/I/81IJLQVtkhS._AC_SL1500_.jpg" />
+                        </div>
+                        <div style="margin-left: 40px" class="w-50 d-flex justify-content-center flex-column">
+                            <h5 id="detPrice">price: <span class="font-bold">rs.340000 /=</span></h5>
+                            <p id="detDescription" class="text-medium">...</p>
+                            <h5 class="mt-3">Specifications</h5>
+                            <ul class="text-medium">
+                                <li id="detVga">VGA: rtx 3080 16gb</li>
+                                <li id="detProcessor">Processor: Amount 10G</li>
+                                <li id="detRam">Memory Amount 10G</li>
+                                <li id="detHard">Memory Amount 10G</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*buy now details modal start*@
+        @*******************************@
+        <div class="modal fade bd-example-modal-lg" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buyModalLabel">Premium 2000</h5>
+                        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex">
+                        <div class="w-50">
+                            <img class="object-fit" id="buyDeviceImg" width="100%" height="250px" src="https://m.media-amazon.com/images/I/81IJLQVtkhS._AC_SL1500_.jpg" />
+                        </div>
+                        <div style="margin-left: 40px" class="w-50 d-flex justify-content-center flex-column">
+                            <h5 id="buyPrice">price: rs.340000 /=</h5>
+                            <h5 class="mt-3">Specifications</h5>
+                            <ul class="text-medium">
+                                <li id="buyVga">VGA: rtx 3080 16gb</li>
+                                <li id="buyProcessor">Processor: Amount 10G</li>
+                                <li id="buyRam">Memory Amount 10G</li>
+                                <li id="buyHard">Memory Amount 10G</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="margin-left: 20px">
+                        <h5>Customize for your specifications</h5>
+                        <div class="d-flex flex-wrap mt-4 mb-4">
+
+                            <div class="col-lg-6">
+                                <label class="text-small">VGA</label>
+                                <select id="drpdwnVga" class="text-small custom-dropdown"></select>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label class="text-small">PROCESSOR</label>
+                                <select id="drpdwnProcessor" class="text-small custom-dropdown"></select>
+                            </div>
+
+                            <div class="col-lg-6 mt-4">
+                                <label class="text-small">MEMORY</label>
+                                <select class="text-small custom-dropdown" id="drpdwnMemory"></select>
+                            </div>
+
+                            <div class="col-lg-6 mt-4">
+                                <label class="text-small">HARD DISK</label>
+                                <select class="text-small custom-dropdown" id="drpdwnHard"></select>
+                            </div>
+                        </div>
+
+                        <div style="margin-right: 20px" class="d-flex justify-content-end gap-2">
+                            <p>new Price:</p>
+                            <p class="font-bold" id="lblCustomPrice">Rs. 365000/=</p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="pb-4" style="padding-left: 20px; padding-right: 20px">
+                        <h5 class="mb-4">Shipping details</h5>
+
+                        <div class="d-flex flex-column">
+                            <label class="mb-2">Shipping address</label>
+                            <input id="txtShippingAddress" type="textarea" class="form-control"/>
+                        </div>
+
+                        <div class="d-flex flex-column mt-3">
+                            <div class="d-flex justify-content-between">
+                                <label class="mb-2">Billing address</label>
+                                <div class="d-flex align-items-center justify-content-center gap-1">
+                                    <input id="chkSameAddress" class="form-check-input" type="checkbox" />
+                                    <label class="text-small form-check-label">same address</label>
+                                </div>
+                            </div>
+                            <input id="txtBillingAddress" type="text-area" class="form-control"/>
+                        </div>
+
+                        <div class="mt-3 d-flex flex-column col-lg-4">
+                            <label class="mb-2">Shipping method</label>
+                            <select id="drpdwnShippingMethod" class="text-small custom-dropdown">
+                                <option value="STANDARD">Standard Shipping</option>
+                                <option value="EXPRESS">Express Shipping</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button
+                            onClick={doPayment('STANDARD')}
+                            class="btn btn-primary">Standard Computer</button>
+                        <button
+                            onClick={doPayment('CUSTOM')}
+                            class="btn btn-danger">Customized Computer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+

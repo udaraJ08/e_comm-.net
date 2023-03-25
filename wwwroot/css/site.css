@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+
+body {
+    background-color: #ecf0f1;
+}
+
+/*webkit styles*/
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff2e4;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2980b9;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d76870;
+}
+
+.f-archivo {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.f-shantell {
+    font-family: 'Shantell Sans', cursive;
+}
+
+.f-bangers {
+    font-family: 'Bangers', cursive;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}

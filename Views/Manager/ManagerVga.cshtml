@@ -1,0 +1,54 @@
+﻿@model List<VgaModal>
+
+<div class="w-100 container" style="height: 100vh">
+
+    <h1 class="f-bangers pt-5">Manage VGA</h1>
+
+    <div class="form-container mt-5">
+        <div class="row pt-3">
+            <div class="form-group col-lg-4">
+                <label class="control-label mb-2">Vga Title</label>
+                <input id="vgaTitle" class="form-control" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4">
+                <label class="control-label mb-2">Size (GB)</label>
+                <input type="number" id="vgaSize" class="form-control" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4">
+                <label class="control-label mb-2">Price (lkr)</label>
+                <input type="number" id="vgaPrice" class="form-control" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="addNewVga()">ADD NEW VGA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container mt-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model) {
+                    <tr>
+                        <th scope="row">@category.Id</th>
+                        <td>@category.Title</td>
+                        <td>@category.Size</td>
+                        <td>@category.Price</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
