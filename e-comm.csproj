@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="Models\Parent - Copy\**" />
+    <Compile Remove="Views\NewFolder\**" />
     <Content Remove="Models\Parent - Copy\**" />
+    <Content Remove="Views\NewFolder\**" />
     <EmbeddedResource Remove="Models\Parent - Copy\**" />
+    <EmbeddedResource Remove="Views\NewFolder\**" />
     <None Remove="Models\Parent - Copy\**" />
+    <None Remove="Views\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Styles\" />
-    <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 
 </Project>

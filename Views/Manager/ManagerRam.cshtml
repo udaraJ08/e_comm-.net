@@ -1,29 +1,29 @@
-﻿@model List<VgaModal>
+﻿@model List<RamModal>
 
 <div class="w-100 container" style="height: 100vh">
 
-    <h1 class="f-bangers pt-5">Manage VGA</h1>
+    <h1 class="f-bangers pt-5">Manage Ram</h1>
 
     <div class="form-container mt-5">
         <div class="row pt-3">
             <div class="form-group col-lg-4">
-                <label class="control-label mb-2">Vga Title</label>
-                <input id="vgaTitle" class="form-control" />
+                <label class="control-label mb-2">Ram Title</label>
+                <input id="ramTitle" class="form-control" />
                 <span class="text-danger"></span>
             </div>
             <div class="form-group col-lg-4">
                 <label class="control-label mb-2">Size (GB)</label>
-                <input type="number" id="vgaSize" class="form-control" />
+                <input type="number" id="ramSize" class="form-control" />
                 <span class="text-danger"></span>
             </div>
             <div class="form-group col-lg-4">
                 <label class="control-label mb-2">Price (lkr)</label>
-                <input type="number" id="vgaPrice" class="form-control" />
+                <input type="number" id="ramPrice" class="form-control" />
                 <span class="text-danger"></span>
             </div>
             <div class="d-flex justify-content-end mt-3">
                 <div class="form-group">
-                    <button class="btn btn-primary" onclick="addNewVga()">ADD NEW VGA</button>
+                    <button class="btn btn-primary" onclick="addNewRam()">ADD NEW RAM</button>
                 </div>
             </div>
         </div>
@@ -40,12 +40,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var category in Model) {
+                @foreach (var category in Model)
+                {
                     <tr>
                         <th scope="row">@category.Id</th>
                         <td>@category.Title</td>
                         <td>@category.Size</td>
-                        <td>Rs.@category.Price/=</td>
+                        <td>Rs.@category.Price /=</td>
                     </tr>
                 }
             </tbody>
