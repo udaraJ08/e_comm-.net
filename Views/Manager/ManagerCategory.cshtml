@@ -1,0 +1,76 @@
+﻿@model List<CategoryModal>
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">e_comm</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Computer" asp-action="Index">Our Computers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="form-container mt-5">
+        <h3 class="f-impact text-light-dark">Add New Series</h3>
+        <div class="row pt-3 d-flex align-items-center">
+            <div class="form-group col-lg-2 d-flex flex-column">
+                <label class="control-label mb-2">Category Type</label>
+                <select id="drpdwnType" class="custom-dropdown">
+                    <option value="DESKTOP">DESKTOP</option>
+                    <option value="NOTEBOOK">NOTEBOOK</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-4">
+                <label class="control-label mb-2">Series Title</label>
+                <input type="text" id="txtTitle" class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label mb-2">Thumbnail Image <span class="text-small">(Provide an image link/url)</span></label>
+                <input type="text" id="txtImgUrl" class="form-control" />
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="addNewCategory()">ADD NEW SERIES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 mt-5 p-3 overflow-auto d-flex align-items-start gap-5 flex-wrap">
+        @foreach (var category in Model)
+        {
+            <div class="showcase-card-container">
+                <div class="overflow-hidden" style="height: 65%">
+                    <img class="object-fit" width="100%" height="260px" src=@category.Img />
+                </div>
+                <div class="mt-4">
+                    <p class="text-center text-small">#@category.Type</p>
+                </div>
+                <div >
+                    <h6 class="text-center font-bold"><b>@category.Title</b></h6>
+                </div>
+                <div class="d-center mt-4">
+                    <button onclick="categoryRoute(@category.Id)"
+                        class="btn btn-primary w-100">
+                        View more
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</div>

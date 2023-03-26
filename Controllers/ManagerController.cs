@@ -145,6 +145,85 @@ namespace e_comm.Controllers
             return View(list);
         }
 
+        public ActionResult ManagerCategory() {
+
+            string query = "select * from category";
+
+            Database db = new Database();
+            db.Open();
+            SqlDataReader reader = db.ExecuteQuery(query);
+            List<CategoryModal> list = new List<CategoryModal>();
+            while (reader.Read())
+            {
+                CategoryModal category = new CategoryModal();
+                category.Id = (int)reader["id"];
+                category.Title = (string)reader["title"];
+                category.Img = (string)reader["img"];
+                category.Type = (string)reader["type"];
+                list.Add(category);
+            }
+            db.Close();
+            return View(list);
+        }
+
+        public ActionResult ManagerDevices()
+        {
+
+            Database db = new Database();
+            db.Open();
+            SqlDataReader reader = db.ExecuteQuery("select devices.id as device_id,devices.title as " +
+                "device_title,devices.description as device_description, " +
+                "devices.base_price as device_base_price,devices.img as device_img, " +
+                "vga.id as vga_id,vga.title as vga_title,vga.price as vga_price, " +
+                "vga.size as vga_size,ram.id as ram_id,ram.title as ram_title, " +
+                "ram.price as ram_price,ram.size as ram_size,processer.id as processer_id, " +
+                "processer.title as processer_title,processer.price as processer_price,processer.clock_speed as processer_clock_speed," +
+                "hard.id as hard_id,hard.title as hard_title, hard.price as hard_price,hard.storage as hard_storage, " +
+                "category.id as category_id,category.title as category_title, " +
+                "(vga.price + ram.price + processer.price + hard.price) as specification_price, " +
+                "((vga.price + ram.price + processer.price + hard.price) + devices.base_price) as total " +
+                "from devices inner join vga on " +
+                "vga.id = devices.vga inner join ram on " +
+                "ram.id = devices.ram inner join processer on " +
+                "processer.id = devices.processor inner join hard on " +
+                "hard.id = devices.hard inner join category on category.id = devices.category");
+
+            List<CategoryViewModal> list = new List<CategoryViewModal>();
+            while (reader.Read())
+            {
+                CategoryViewModal category = new CategoryViewModal();
+                category.DeviceId = (int)reader["device_id"];
+                category.DeviceTitle = (string)reader["device_title"];
+                category.DeviceDescription = (string)reader["device_description"];
+                category.Device_base_price = (decimal)reader["device_base_price"];
+                category.Device_img = (string)reader["device_img"];
+                category.Vga_id = (int)reader["vga_id"];
+                category.Vga_title = (string)reader["vga_title"];
+                category.Vga_price = (decimal)reader["vga_price"];
+                category.Vga_size = (int)reader["vga_size"];
+                category.Ram_id = (int)reader["ram_id"];
+                category.Ram_title = (string)reader["ram_title"];
+                category.Ram_price = (decimal)reader["ram_price"];
+                category.Ram_size = (int)reader["ram_size"];
+                category.Processor_id = (int)reader["processer_id"];
+                category.Processor_title = (string)reader["processer_title"];
+                category.Processor_price = (decimal)reader["processer_price"];
+                category.Processor_clock_speed = (string)reader["processer_clock_speed"];
+                category.Hard_id = (int)reader["hard_id"];
+                category.Hard_title = (string)reader["hard_title"];
+                category.Hard_price = (decimal)reader["hard_price"];
+                category.Hard_storage = (int)reader["hard_storage"];
+                category.Category_id = (int)reader["category_id"];
+                category.Category_title = (string)reader["category_title"];
+                category.Specification_price = (decimal)reader["specification_price"];
+                category.Total = (decimal)reader["total"];
+
+                list.Add(category);
+            }
+            db.Close();
+            return View(list);
+        }
+
         [HttpPost("/vga/create")]
         public HttpStatusCode VgaCreate(string title, decimal price, int size)
         {
@@ -211,6 +290,19 @@ namespace e_comm.Controllers
             db.ExecuteNonQuery(query);
 
             return HttpStatusCode.OK;
+        }
+
+        [HttpPost("/category/add")]
+        public HttpStatusCode CategoryCreate(string type, string title, string image)
+        {
+            Database db = new Database();
+            db.Open();
+
+            string query = "insert into category (type, title, img) values ('" + type + "', '" + title + "', '" + image + "')";
+
+            db.ExecuteNonQuery(query);
+
+            return HttpStatusCode.Created;
         }
 
         // GET: ManagerController/Details/5

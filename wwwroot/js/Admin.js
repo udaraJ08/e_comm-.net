@@ -79,3 +79,30 @@ const handlePaymentState = (state) => {
         error: function (responce) { console.error(responce.data) }
     });
 }
+
+const addNewCategory = () => {
+
+    const type = $("#drpdwnType").val()
+    const title = $("#txtTitle").val()
+    const image = $("#txtImgUrl").val()
+
+    $.ajax({
+        url: '/category/add',
+        type: 'POST',
+        data: { type, title, image },
+        async: false,
+        success: function () {
+
+            Swal.fire({
+                title: 'Done',
+                text: `New Category Created`,
+                icon: 'success',
+                confirmButtonText: 'close',
+                onClose: () => {
+                    window.location.reload()
+                }
+            })
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+}
