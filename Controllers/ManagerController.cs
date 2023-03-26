@@ -197,6 +197,22 @@ namespace e_comm.Controllers
             return HttpStatusCode.Created;
         }
 
+        [HttpPatch("/order/status-update")]
+        public HttpStatusCode OrderStatusUpdate(int status, int id)
+        {
+            Console.WriteLine(status);
+            Console.WriteLine(id);
+
+            Database db = new Database();
+            db.Open();
+
+            string query = "update payment set order_status = "+status+" where id = "+id+"";
+
+            db.ExecuteNonQuery(query);
+
+            return HttpStatusCode.OK;
+        }
+
         // GET: ManagerController/Details/5
         public ActionResult Details(int id)
         {

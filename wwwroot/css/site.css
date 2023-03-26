@@ -48,3 +48,10 @@ html {
     font-size: 16px;
   }
 }
+
+.custom-modal-header {
+    background-color: #ecf0f1 !important;
+    color: #34495e;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 20px;
+}

@@ -2,7 +2,7 @@
 
 <div class="w-100 container" style="height: 100vh">
 
-    <h1 class="f-bangers pt-5">Registered Customers</h1>
+    <h1 class="f-bangers pt-5">Manage Orders</h1>
 
     <div style="overflow-x:auto;" class="form-container mt-4">
        <div>
@@ -18,14 +18,14 @@
                         <th>Vga</th>
                         <th>Ram</th>
                         <th>Hard</th>
-                        <th>Processor</th>
+                        <th>Processor</th>  
                         <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var category in Model)
                     {
-                        <tr data-toggle="modal" data-target="#exampleModal" onclick="selectPayment(@category)">
+                        <tr data-toggle="modal" data-target="#exampleModal" onclick="selectOrderStatus(@category.Order_status, @category.Id)">
                             <td>@category.Devices_title</td>
                             <td>@category.Customer_name</td>
                             <td>@category.Shipping_address</td>
@@ -48,13 +48,18 @@
     @*******************************@
     <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-            <div class="modal-content d-flex flex-column p-4 d-center">
-                <h4 class="mb-3">Handle Order !</h4>
-                <div class="d-flex gap-3">
-                    <button class="btn btn-warning text-light">Processing</button>
-                    <button class="btn btn-primary">Shipped</button>
-                    <button class="btn btn-success">Completed</button>
-                    <button class="btn btn-danger">Cancelled</button>
+            <div class="modal-content">
+                <div class="custom-modal-header">
+                    <h4 class="m-0 p-0" text-center">Handle Order !</h4>
+                </div>
+                <div class="d-flex d-flex flex-column d-center gap-4 p-4">
+                    <div class="d-flex gap-3 d-flex d-center">
+                        <button onclick="handlePaymentState(1)" id="btnProcessing" class="btn btn-warning">Processing</button>
+                        <button onclick="handlePaymentState(2)" id="btnShipped" class="btn btn-primary">Shipped</button>
+                        <button onclick="handlePaymentState(3)" id="btnCompleted" class="btn btn-success">Completed</button>
+                        <button onclick="handlePaymentState(-1)" id="btnCancelled" class="btn btn-danger">Cancelled</button>
+                    </div>
+                    <h5 id="lblOrderCompleted" class="text-danger text-decoration-underline m-0 p-0">Order is completed</h5>
                 </div>
             </div>
         </div>
