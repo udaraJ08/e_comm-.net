@@ -106,3 +106,133 @@ const addNewCategory = () => {
         error: function (responce) { console.error(responce.data) }
     });
 }
+
+const addNewDevice = () => {
+
+    const vga = $("#drpdwnDeviceVga").val()
+    const ram = $("#drpdwnDeviceMemory").val()
+    const processor = $("#drpdwnDeviceProcessor").val()
+    const hard = $("#drpdwnDeviceHard").val()
+
+    const catType = $("#drpdwnDeviceType").val()
+    const title = $("#txtDeviceTitle").val()
+    const os = $("#txtDeviceOs").val()
+
+    const description = $("#txtrDeviceDescription").val()
+    const basePrice = $("#txtDeviceBasePrice").val()
+    const image = $("#txtDeviceImgUrl").val()
+
+    const data = {
+        vga,
+        ram,
+        processor,
+        hard,
+        catType,
+        title,
+        os,
+        image,
+        description,
+        basePrice,
+    }
+
+
+    $.ajax({
+        url: '/device/add',
+        type: 'POST',
+        data,
+        async: false,
+        success: function () {
+
+            Swal.fire({
+                title: 'Done',
+                text: `New Device Added`,
+                icon: 'success',
+                confirmButtonText: 'close',
+                onClose: () => {
+                    window.location.reload()
+                }
+            })
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+}
+
+const fetchDeviceHardWare = () => {
+    $.ajax({
+        url: '/ComputerController/vga',
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+
+            var $dropdown = $("#drpdwnDeviceVga");
+            $.each(data, function (index, item) {
+                $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
+            });
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+
+    $.ajax({
+        url: '/ComputerController/processor',
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+
+            var $dropdown = $("#drpdwnDeviceProcessor");
+            $.each(data, function (index, item) {
+                $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
+            });
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+
+    $.ajax({
+        url: '/ComputerController/hard',
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+
+            var $dropdown = $("#drpdwnDeviceHard");
+            $.each(data, function (index, item) {
+                $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
+            });
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+
+    $.ajax({
+        url: '/ComputerController/ram',
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+
+            var $dropdown = $("#drpdwnDeviceMemory");
+            $.each(data, function (index, item) {
+                $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
+            });
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+
+    $.ajax({
+        url: "/category/fetch",
+        method: 'GET',
+        success: function (responce) {
+
+            console.log(responce)
+            const data = responce.data
+
+            var $dropdown = $("#drpdwnDeviceType");
+            $.each(data, function (index, item) {
+                $dropdown.append(`<option value=${item.id}>${item.title}</option>`);
+            });
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+}
+
+fetchDeviceHardWare();

@@ -28,7 +28,68 @@
 </header>
 
 <div class="container">
-    <h3 id="catTopic" class="f-bangers">Check out devices</h3>
+
+    <div class="form-container mt-5">
+        <h3 class="f-impact text-light-dark">Add New Device</h3>
+        <div class="row pt-3 d-flex align-items-center">
+            <div class="d-flex flex-wrap mt-4 mb-4 gap-3">
+
+                <div class="col-lg-2 d-flex flex-column">
+                    <label class="text-small">VGA</label>
+                    <select id="drpdwnDeviceVga" class="text-small custom-dropdown"></select>
+                </div>
+
+                <div class="col-lg-3 d-flex flex-column">
+                    <label class="text-small">PROCESSOR</label>
+                    <select id="drpdwnDeviceProcessor" class="text-small custom-dropdown"></select>
+                </div>
+
+                <div class="col-lg-3 d-flex flex-column">
+                    <label class="text-small">MEMORY</label>
+                    <select class="text-small custom-dropdown" id="drpdwnDeviceMemory"></select>
+                </div>
+
+                <div class="col-lg-3 d-flex flex-column">
+                    <label class="text-small">HARD DISK</label>
+                    <select class="text-small custom-dropdown" id="drpdwnDeviceHard"></select>
+                </div>
+            </div>
+            <div class="form-group col-lg-2 d-flex flex-column">
+                <label class="control-label mb-2">Category Type</label>
+                <select id="drpdwnDeviceType" class="custom-dropdown"></select>
+            </div>
+            <div class="form-group col-lg-4">
+                <label class="control-label mb-2">Device Os</label>
+                <input type="text" id="txtDeviceOs" class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label mb-2">Device Title</label>
+                <input type="text" id="txtDeviceTitle" class="form-control" />
+            </div>
+
+            <div class="mt-4 row gap-3">
+                <div class="form-group col-lg-12">
+                    <label class="control-label mb-2">Device Description</label>
+                    <textarea id="txtrDeviceDescription" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class="control-label mb-2">Base Price</label>
+                    <input type="number" id="txtDeviceBasePrice" class="form-control" />
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label class="control-label mb-2">Thumbnail Image <span class="text-small">(Provide an image link/url)</span></label>
+                    <input type="text" id="txtDeviceImgUrl" class="form-control" />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="addNewDevice()">ADD NEW DEVICE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="w-100 mt-5 p-3 overflow-auto d-flex align-items-start gap-5 flex-wrap">
         @foreach (var category in Model)
@@ -48,11 +109,6 @@
                         data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-primary w-100">
                         View Details
-                    </button>
-                    <button onclick="handleBuyNow(@category.DeviceId)" ;
-                        data-toggle="modal" data-target="#buyModal"
-                        class="btn btn-danger w-100">
-                        Buy Now
                     </button>
                 </div>
             </div>

@@ -168,7 +168,6 @@ namespace e_comm.Controllers
 
         public ActionResult ManagerDevices()
         {
-
             Database db = new Database();
             db.Open();
             SqlDataReader reader = db.ExecuteQuery("select devices.id as device_id,devices.title as " +
@@ -303,6 +302,43 @@ namespace e_comm.Controllers
             db.ExecuteNonQuery(query);
 
             return HttpStatusCode.Created;
+        }
+
+        [HttpPost("/device/add")]
+        public HttpStatusCode DeviceCreate(int vga, int ram, int processor, int hard, int catType, string title, string os, string image, string description, string basePrice)
+        {
+            Database db = new Database();
+            db.Open();
+
+            string query = "insert into devices (vga, ram, processor, hard, category, img, title, description, os, base_price) " +
+                "values(" +vga+ ", " + ram+ ", " + processor + ", " + hard + ",  " + catType + ", '" +image+ "', '"+title+"', '"+description+"', '"+os+"', '"+basePrice+"')";
+
+            db.ExecuteNonQuery(query);
+
+            return HttpStatusCode.Created;
+        }
+
+        [HttpGet("/category/fetch")]
+        public JsonResult FetchCategory()
+        {
+            string query = "select * from category";
+
+            Database db = new Database();
+            db.Open();
+            SqlDataReader reader = db.ExecuteQuery(query);
+            List<CategoryModal> list = new List<CategoryModal>();
+
+            while (reader.Read())
+            {
+                CategoryModal category = new CategoryModal();
+                category.Id = (int)reader["id"];
+                category.Title = (string)reader["title"];
+                category.Img = (string)reader["img"];
+                category.Type = (string)reader["type"];
+                list.Add(category);
+            }
+            db.Close();
+            return Json(new { data = list });
         }
 
         // GET: ManagerController/Details/5
