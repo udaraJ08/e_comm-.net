@@ -1,5 +1,13 @@
 ﻿let _curOrderStatus;
 let _curOrderId;
+let _vgaDataSet;
+let _ramDataset;
+let _processorDataSet;
+let _hardDataSet;
+let _ordersDataSet;
+let _customerDataSet;
+let _categoriesDataSet;
+let _deviceDataSet;
 
 const giveStatusName = (status) => {
 
@@ -165,6 +173,8 @@ const fetchDeviceHardWare = () => {
 
             const data = responce.data
 
+            _vgaDataSet = data
+
             var $dropdown = $("#drpdwnDeviceVga");
             $.each(data, function (index, item) {
                 $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
@@ -180,6 +190,8 @@ const fetchDeviceHardWare = () => {
 
             const data = responce.data
 
+            _processorDataSet = data;
+
             var $dropdown = $("#drpdwnDeviceProcessor");
             $.each(data, function (index, item) {
                 $dropdown.append(`<option value=${item.id} data-cost=${item.price}>${item.title}</option>`);
@@ -194,6 +206,7 @@ const fetchDeviceHardWare = () => {
         success: function (responce) {
 
             const data = responce.data
+            _hardDataSet = data
 
             var $dropdown = $("#drpdwnDeviceHard");
             $.each(data, function (index, item) {
@@ -209,6 +222,7 @@ const fetchDeviceHardWare = () => {
         success: function (responce) {
 
             const data = responce.data
+            _ramDataset = data
 
             var $dropdown = $("#drpdwnDeviceMemory");
             $.each(data, function (index, item) {
@@ -223,8 +237,8 @@ const fetchDeviceHardWare = () => {
         method: 'GET',
         success: function (responce) {
 
-            console.log(responce)
             const data = responce.data
+            _categoriesDataSet = data
 
             var $dropdown = $("#drpdwnDeviceType");
             $.each(data, function (index, item) {
@@ -234,5 +248,70 @@ const fetchDeviceHardWare = () => {
         error: function (responce) { console.error(responce.data) }
     });
 }
+
+const downloadReport = (filename, tabName, dataset) => {
+    var ws = XLSX.utils.json_to_sheet(dataset);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, tabName);
+    XLSX.writeFile(wb, `${filename}.xlsx`);
+}
+
+$("#btnVgaReportDownload").click(function () {
+    downloadReport("vga-report", "vga", _vgaDataSet);
+});
+
+$("#btnRamReportDownload").click(function () {
+    downloadReport("ram-report", "ram", _ramDataset);
+});
+
+$("#btnProcessorReportDownload").click(function () {
+    downloadReport("processor-report", "processor", _processorDataSet);
+});
+
+$("#btnHardReportDownload").click(function () {
+    downloadReport("hard-report", "hard", _hardDataSet);
+});
+
+/*$("#btnOrdersReportDownload").click(function () {
+    $.ajax({
+        url: "/order/fetch",
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+            _ordersDataSet = data
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+    downloadReport("order-report", "order", _ordersDataSet);
+});
+
+$("#btnCustomerReportDownload").click(function () {
+    $.ajax({
+        url: "/order/fetch",
+        method: 'GET',
+        success: function (responce) {
+
+            const data = responce.data
+            _ordersDataSet = data
+        },
+        error: function (responce) { console.error(responce.data) }
+    });
+    downloadReport("order-report", "order", _ordersDataSet);
+});*/
+
+$("#btnCategoryReportDownload").click(function () {
+    downloadReport("category-report", "category", _categoriesDataSet);
+});
+
+
+$("#btnDevicesReportDownload").click(function () {
+    downloadReport("device-report", "devices", _deviceDataSet);
+});
+
+const test = (data) => {
+    console.log()
+}
+
 
 fetchDeviceHardWare();
