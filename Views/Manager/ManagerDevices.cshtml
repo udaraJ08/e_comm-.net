@@ -5,21 +5,47 @@
 
     int i = 0;
 }
+
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5 w-100">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">e_comm</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Manager" asp-action="Index">e_comm</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <li class="nav-item custom-nav-item" onclick="handleRoute('https://localhost:7184/Manager/ManagerVga')">
+                        <p class="nav-link text-dark">VGA</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerRam')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">RAM</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerHard')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">HARD</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerProcessor')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">PROCESSORS</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerOrders')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">Orders</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerCustomer')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">Customers</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/Manager/ManagerCategory')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">Categories</p>
+                    </li>
+                    <li onclick="handleRoute('https://localhost:7184/manager/ManagerDevices')" class="nav-item custom-nav-item">
+                        <p class="nav-link text-dark">Devices</p>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Computer" asp-action="Index">Our Computers</a>
+                        <button hidden onclick="handleLogout()" id="btnLogout" class="btn btn-outline-danger">LOGOUT</button>
+                        <button hidden onclick="handleLogin()"
+                                id="btnLogin" class="btn btn-outline-primary">
+                            LOGIN
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -29,7 +55,7 @@
 
 <div class="container">
 
-    <div class="form-container mt-5">
+    <div class="form-container">
         <h3 class="f-impact text-light-dark">Add New Device</h3>
         <div class="row pt-3 d-flex align-items-center">
             <div class="d-flex flex-wrap mt-4 mb-4 gap-3">

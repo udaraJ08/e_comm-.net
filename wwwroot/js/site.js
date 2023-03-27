@@ -1,4 +1,32 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const handleLogin = () => {
 
-// Write your JavaScript code.
+    window.location.href = "https://localhost:7184/home/login"
+}
+
+const handleLogout= () => {
+
+    localStorage.removeItem('user')
+    localStorage.removeItem('role')
+
+    window.location.reload(0)
+}
+
+const handleAuth = () => {
+
+    const role = localStorage.getItem('role')
+
+    if (role === null) {
+        $("#btnLogin").attr("hidden", false)
+        $("#btnLogout").attr("hidden", true)
+    } else {
+        $("#btnLogin").attr("hidden", true)
+        $("#btnLogout").attr("hidden", false)
+    }
+}
+
+const handleRoute = (url) => {
+
+    window.location.href = url
+}
+
+handleAuth();

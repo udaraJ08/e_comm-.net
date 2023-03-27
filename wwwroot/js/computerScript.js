@@ -36,12 +36,13 @@ const getSpecPrice = () => _selectedItemPrice + _vgaPrice + _ramPrice + _hardPri
 
 const doPayment = (type) => {
 
+    const user = JSON.parse(localStorage.getItem('user'))
+
     const data = {
         device_id: _selectedItem?.deviceId,
-        user_id: 1,
+        user_id: user?.id,
         shipping_address: $('#txtShippingAddress').val(),
 
-        
         billing_address: $('#chkSameAddress').is(":checked") ? $('#txtShippingAddress').val() : $('#txtBillingAddress').val(),
 
         shipping_method: $('#drpdwnShippingMethod').val(),
@@ -53,6 +54,19 @@ const doPayment = (type) => {
         processor: type === CUSTOM ? Number($('#drpdwnProcessor').val()) : null,
         amount: type === CUSTOM ? getSpecPrice() : _selectedItem.total,
 
+    }
+
+    const role = localStorage.getItem('role')
+
+    if (role === null) {
+        Swal.fire({
+            title: 'Unauthorized user',
+            text: 'You have to login before placing an order !',
+            icon: 'error',
+            confirmButtonText: 'close'
+        })
+        
+        return
     }
 
     $.ajax({

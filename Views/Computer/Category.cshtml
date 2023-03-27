@@ -6,7 +6,7 @@
     int i = 0;
 }
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5 position-absolute w-100">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">e_comm</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,6 +20,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Computer" asp-action="Index">Our Computers</a>
+                    </li>
+                    <li class="nav-item">
+                        <button onclick="handleLogout()" id="btnLogout" class="btn btn-outline-danger">LOGOUT</button>
+                        <button onclick="handleLogin()"
+                                id="btnLogin" class="btn btn-outline-primary">
+                            LOGIN
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -49,7 +56,7 @@
                         class="btn btn-primary w-100">
                         View Details
                     </button>
-                    <button onclick="handleBuyNow(@category.DeviceId)" ;
+                    <button id="btnBuyNow" onclick="handleBuyNow(@category.DeviceId)" ;
                         data-toggle="modal" data-target="#buyModal"
                         class="btn btn-danger w-100">
                         Buy Now

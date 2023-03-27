@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n7HG4pES++GVY6wnPkFdcbuqSTZ3bhhvM/ycw5EeSBA=",
+  "Hash": "mnkyX25S7uiFnvAhnfe5stji9nkt25NMoKc6VcUVxho=",
   "Source": "e-comm",
   "BasePath": "_content/e-comm",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\computer.css"
+    },
+    {
+      "Identity": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\css\\Login.css",
+      "SourceId": "e-comm",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\",
+      "BasePath": "_content/e-comm",
+      "RelativePath": "css/Login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Login.css"
     },
     {
       "Identity": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\css\\site.css",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\computerScript.js"
+    },
+    {
+      "Identity": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\js\\Login.js",
+      "SourceId": "e-comm",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\",
+      "BasePath": "_content/e-comm",
+      "RelativePath": "js/Login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Login.js"
     },
     {
       "Identity": "D:\\SiNiSteR\\education\\Esoft\\AD-2\\e-comm\\e-comm\\wwwroot\\js\\ManageHardWare.js",

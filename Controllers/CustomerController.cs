@@ -1,6 +1,9 @@
 ﻿using e_comm.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Net;
 
 namespace e_comm.Controllers
 {
@@ -29,63 +32,77 @@ namespace e_comm.Controllers
             return View();
         }
 
-        // POST: CustomerController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CustomerCreate(CustomerViewModal customerViewModal)
+        [HttpPost("/customer/register")]
+        public HttpStatusCode RegisterCustomer(string name, string email, string address, DateTime dob, string nic, string password)
         {
             try
             {
-                if (ModelState.IsValid) {
-                    return RedirectToAction(nameof(Test));
+                string query = "insert into customer(name, address, dob, email, nic) values('" + name + "', '" + address + "', '" + dob + "', '" + email + "', '" + nic + "')";
+                string query_auth = "insert into auth(username, password, role) values('"+email+"', '"+password+"', 'CUSTOMER')";
+
+                Console.WriteLine(query);
+                Console.WriteLine(query_auth);
+
+                Database db = new Database();
+                db.Open();
+
+                db.ExecuteNonQuery(query);
+                db.ExecuteNonQuery(query_auth);
+
+                db.Close(); 
+
+                return HttpStatusCode.Created;
+            }
+            catch
+            {
+                return HttpStatusCode.ExpectationFailed;
+            }
+        }
+
+        [HttpGet("/customer/login")]
+        public JsonResult LoginCustomer(string username, string password)
+        {
+            try
+            {
+                string query = "select * from auth where username='" + username + "' AND password='" + password + "'";
+
+                Database db = new Database();
+                db.Open();
+                SqlDataReader reader = db.ExecuteQuery(query);
+                string customer_email = null;
+                string role = null;
+                while (reader.Read())
+                {
+                    customer_email = (string)reader["username"];
+                    role = (string)reader["role"];
                 }
-                return View(Test);
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: CustomerController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                Console.WriteLine(query);
 
-        // POST: CustomerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                string secondQuery = "select * from customer where email='" + customer_email + "'";
 
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+                SqlDataReader secondReader = db.ExecuteQuery(secondQuery);
+                List<CustomerViewModal> customers = new List<CustomerViewModal>();
+                while (secondReader.Read())
+                {
+                    Console.WriteLine((string)secondReader["email"]);
 
-        // POST: CustomerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
+                    CustomerViewModal customer = new CustomerViewModal();
+                    customer.Id = (int)secondReader["id"];
+                    customer.Name = (string)secondReader["name"];
+                    customer.Address = (string)secondReader["address"];
+                    customer.Nic = (string)secondReader["nic"];
+                    customer.Dob = (DateTime)secondReader["dob"];
+                    customer.Email = (string)secondReader["email"];
+                    customers.Add(customer);
+                }
+                db.Close();
+
+                return Json(new { data = customers, role });
             }
-            catch
-            {
-                return View();
+            catch(Exception e) {
+                Console.WriteLine(e);
+                return Json(new { message = e.Message });
             }
         }
     }

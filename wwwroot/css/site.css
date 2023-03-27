@@ -63,3 +63,16 @@ html {
 .text-light-dark {
     color: #34495e;
 }
+
+.custom-nav-item {
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.custom-nav-item:hover {
+    transition: 0.3s;
+    letter-spacing: 4px;
+    text-decoration: underline;
+    text-decoration-color: #3c40c6;
+    text-underline-offset: 0.5em;
+}

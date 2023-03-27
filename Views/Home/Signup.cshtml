@@ -1,0 +1,25 @@
+﻿@model List<CustomerViewModal>
+
+@{
+    ViewData["Title"] = "Signup";
+}
+
+<div class="vertical-align login-body">
+    <div class="container-login">
+        <div class="avatar"></div>
+
+        <form onsubmit="return false">
+            <input type="text" id="txtName" placeholder="Your name" />
+            <input type="text" type="email" id="txtUsername" placeholder="Username/email"/>
+            <input type="text" id="txtAddress" placeholder="Address"/>
+            <input type="text" id="txtNic" placeholder="National Identity Card(NIC)"/>
+            <input type="date" id="txtDob" placeholder="DOB"/>
+            <input type="password" id="pwPassword" placeholder="Your Password"/>
+            <input type="password" id="pwConfirmPassword" placeholder="Confirm Password"/>
+            <input onclick="registerCustomer()" type="button" value="SIGNUP" />
+        </form>
+        <div class="mt-2 d-center">
+            <a href="https://localhost:7184/home/login" class="text-center m-0 p-0">Back to Login</a>
+        </div>
+    </div>
+</div>

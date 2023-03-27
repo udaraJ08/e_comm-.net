@@ -296,6 +296,8 @@ namespace e_comm.Controllers
 
             db.ExecuteNonQuery(query);
 
+            db.Close();
+
             return HttpStatusCode.Created;
         }
 

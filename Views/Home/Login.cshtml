@@ -1,0 +1,19 @@
+﻿@model List<CustomerViewModal>
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="vertical-align login-body">
+    <div class="container-login">
+        <div class="avatar"></div>
+
+        <form onsubmit="return false">
+            <input id="txtLoginUsername" type="text" placeholder="Username">
+            <input id="txtLoginPassword" type="password" placeholder="Password">
+            <input onclick="login()" type="button" value="Login">
+            <button onclick="routeHandler('https://localhost:7184/home/signup')" class="btn btn-danger w-100 mt-3">New User Register</button>
+        </form>
+
+    </div>
+</div>
